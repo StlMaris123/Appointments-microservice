@@ -31,7 +31,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'redis'
 gem 'redis-session-store'
 
+gem 'geocoder'
 gem 'google-api-client', require: 'google/apis/calendar_v3'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -42,6 +44,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-nav'
   gem 'dotenv-rails'
+  gem 'annotate'
 end
 
 group :development do

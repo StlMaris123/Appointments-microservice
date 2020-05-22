@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   private
 
   def find_current_user
-    @user = User.find(session["warden.user.user.key"]&.first&.first)
+   @user = User.find_by_session_id(session&.id)    
   end
 
   def json_request?
