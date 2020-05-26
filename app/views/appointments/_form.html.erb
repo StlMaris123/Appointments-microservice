@@ -1,5 +1,4 @@
-<form>
-  <div class='form-group'>
+<div class='form-group'>
     <div class="col-md-8">
       <%= form_with(model: appointment, local: true) do |form| %>
         <% if appointment.errors.any? %>
@@ -46,4 +45,3 @@
       <% end %>
     </div>
   </div>
-</form>
