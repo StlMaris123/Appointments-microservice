@@ -23,4 +23,6 @@
 #
 class User < ApplicationRecord
     has_many :appointments, dependent: :destroy
+    geocoded_by :address
+    after_validation :geocode
 end

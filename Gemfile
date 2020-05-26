@@ -33,6 +33,7 @@ gem 'redis-session-store'
 
 gem 'geocoder'
 gem 'google-api-client', require: 'google/apis/calendar_v3'
+gem 'google_places'
 
 
 group :development, :test do
