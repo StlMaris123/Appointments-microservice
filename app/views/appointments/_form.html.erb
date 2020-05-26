@@ -1,43 +1,49 @@
-<%= form_with(model: appointment, local: true) do |form| %>
-  <% if appointment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+<form>
+  <div class='form-group'>
+    <div class="col-md-8">
+      <%= form_with(model: appointment, local: true) do |form| %>
+        <% if appointment.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
 
-      <ul>
-        <% appointment.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+            <ul>
+              <% appointment.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
+
+        <div class="form-group">
+          <%= form.label :title, for: "exampleFormControlInput1" %>
+          <%= form.text_field :title, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :start_date, for: "exampleFormControlInput1" %>
+          <%= form.datetime_select :start_date, class: "form-control" %>
+        </div>
+        
+        <div class="form-group">
+          <%= form.label :end_date, for: "exampleFormControlInput1" %>
+          <%= form.datetime_select :end_date, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :doctor_name,for: "exampleFormControlInput1" %>
+          <%= form.text_field :doctor_name, class: "form-control" %>
+        </div>
+
+
+        <div class="form-group">
+          <%= form.label :description, for: "exampleFormControlInput1" %>
+          <%= form.text_area :description, class: "form-control"%>
+        </div>
+
+        <div class="actions">
+          <%= form.submit 'Submit', class: "btn btn-primary lg" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
   </div>
-
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.datetime_select :start_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :end_date %>
-    <%= form.datetime_select :end_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :doctor_name %>
-    <%= form.text_field :doctor_name %>
-  </div>
-
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</form>

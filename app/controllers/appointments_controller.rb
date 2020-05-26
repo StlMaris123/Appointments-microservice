@@ -10,7 +10,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments
   # GET /appointments.json
   def index
-    @appointments = Appointment.all
+    @appointments = Appointment.where(user: @user)
   end
 
   # GET /appointments/1
@@ -28,7 +28,7 @@ class AppointmentsController < ApplicationController
   # POST /appointments
   # POST /appointments.json
   def create
-    if @user&.refresh_token.present?
+     if @user&.refresh_token.present?
       client = get_google_calendar_client @user
       appointment = params[:appointment]
       event = get_event appointment
@@ -36,6 +36,7 @@ class AppointmentsController < ApplicationController
       flash[:notice] = 'Appointment successfully created'
       redirect_to appointments_path
     else
+     
       none_gmail_users
     end
   end
@@ -125,12 +126,12 @@ class AppointmentsController < ApplicationController
                                                description: app[:description],
                                                start: {
                                                  date_time: Time.new(app['start_date(1i)'],app['start_date(2i)'],app['start_date(3i)'],app['start_date(4i)'],app['start_date(5i)']).to_datetime.rfc3339,
-                                                 time_zone: "Etc/UTC"
+                                                 time_zone: "Africa/Johannesburg"
 
                                                },
                                                end: {
                                                  date_time: Time.new(app['end_date(1i)'],app['end_date(2i)'],app['end_date(3i)'],app['end_date(4i)'],app['end_date(5i)']).to_datetime.rfc3339,
-                                                 time_zone: "Etc/UTC"
+                                                 time_zone: "Africa/Johannesburg"
                                                },
                                                
                                                reminders: {

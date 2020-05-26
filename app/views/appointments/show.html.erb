@@ -1,34 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @appointment&.title %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @appointment&.user_id %>
-</p>
-
-<p>
-  <strong>Start date:</strong>
-  <%= @appointment&.start_date %>
-</p>
-
-<p>
-  <strong>End date:</strong>
-  <%= @appointment&.end_date %>
-</p>
-
-<p>
-  <strong>Doctor name:</strong>
-  <%= @appointment&.doctor_name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @appointment&.description %>
-</p>
-
-<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
-<%= link_to 'Back', appointments_path %>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%= @appointment&.title %></h5>
+    <h6 class="card-subtitle mb-2 text-muted">With Dr.: <%= @appointment&.doctor_name %></h6>
+    <p class="card-text"><strong><p>Start Time</strong></p><p><%= @appointment&.start_date %></p>
+    <p class="card-text"> <strong><p>End Time</strong></p><p><%= @appointment&.end_date %></p>
+    <p class="card-text"><%= @appointment&.description %></p>
+    <a href="#" class="card-link"><%= link_to 'Edit', edit_appointment_path(@appointment) %></a> |
+    <a href="#" class="card-link"><%= link_to 'Back', appointments_path %></a>
+  </div>
+</div>
