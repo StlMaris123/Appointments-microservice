@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
   private
 
   def find_current_user
-   @user = User.find_by_session_id(session&.id)    
+    @user = User.find_by_email('stellamarisnjage@gmail.com')    
+  #  @user = User.find_by_session_id(session&.id)    
   end
 
   def json_request?
