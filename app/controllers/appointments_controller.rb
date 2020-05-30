@@ -34,6 +34,7 @@ class AppointmentsController < ApplicationController
       event = get_event appointment
       client.insert_event('primary', event)
       flash[:notice] = 'Appointment successfully created'
+      @user.appointments.create(appointment_params)
       redirect_to appointments_path
     else
      
