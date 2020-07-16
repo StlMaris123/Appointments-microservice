@@ -15,12 +15,20 @@
 RSpec.describe "/appointments", type: :request do
   # Appointment. As you add validations to Appointment, be sure to
   # adjust the attributes here as well.
+  let(:user) { User.create(email: "test@test.com", encrypted_password: "123456") }
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      title: "First event test",
+      user: user,
+      start_date: Date.today,
+      end_date: Date.today,
+      doctor_name: "please",
+      description: "work"
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { user_id: nil}
   }
 
   describe "GET /index" do
@@ -84,15 +92,20 @@ RSpec.describe "/appointments", type: :request do
 
   describe "PATCH /update" do
     context "with valid parameters" do
+      let(:user) { User.create(email: "test@test.com", encrypted_password: "123456") }
+
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          title: "Updated Event",
+          user: user
+        }
       }
 
       it "updates the requested appointment" do
         appointment = Appointment.create! valid_attributes
         patch appointment_url(appointment), params: { appointment: new_attributes }
         appointment.reload
-        skip("Add assertions for updated state")
+        expect(new_attributes.title).to eq "Updated Event"
       end
 
       it "redirects to the appointment" do
